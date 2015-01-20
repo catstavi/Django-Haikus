@@ -15,7 +15,7 @@ class Word(models.Model):
     def load_cmudict(self):
         for number in range(100, 150):
             w_str = cmudict.words()[number]
-            w = Word(word = w_str, syllable_count=self.countSyllables(w_str), rhyme_end=self.findRhymeEnd(phonemes))
+            w = Word(word = w_str, syllable_count=self.countSyllables(w_str), rhyme_end=self.findRhymeEnd('x'))
             w.save()
 
     @classmethod
@@ -29,8 +29,8 @@ class Word(models.Model):
             for x in range(len(phonemeList)):
                 if self.hasNumber(phonemeList[x]):
                     syllableCount += 1
-            w = Word(word = word, syllable_count=syllableCount, rhyme_end=self.findRhymeEnd(phonemes))
-            w.save
+            w = Word(word = word, syllable_count=syllableCount, rhyme_end="*******")
+            w.save()
             return syllableCount
 
     @classmethod
